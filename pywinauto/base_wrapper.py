@@ -975,10 +975,6 @@ class BaseWrapper(object):
             keyboard.send_text(
                 aligned_keys,
                 pause,
-                with_spaces,
-                with_tabs,
-                with_newlines,
-                turn_off_numlock,
                 vk_packet)
 
         # detach the python process from the window's process
