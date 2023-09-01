@@ -925,6 +925,7 @@ class BaseWrapper(object):
         with_newlines = False,
         turn_off_numlock = True,
         set_foreground = True,
+        inline_modifiers = True,
         vk_packet = True):
         """
         Type keys to the element using keyboard.send_keys
@@ -961,14 +962,24 @@ class BaseWrapper(object):
             aligned_keys = six.text_type(keys)
 
         # Play the keys to the active window
-        keyboard.send_keys(
-            aligned_keys,
-            pause,
-            with_spaces,
-            with_tabs,
-            with_newlines,
-            turn_off_numlock,
-            vk_packet)
+        if inline_modifiers:
+            keyboard.send_keys(
+                aligned_keys,
+                pause,
+                with_spaces,
+                with_tabs,
+                with_newlines,
+                turn_off_numlock,
+                vk_packet)
+        else:
+            keyboard.send_text(
+                aligned_keys,
+                pause,
+                with_spaces,
+                with_tabs,
+                with_newlines,
+                turn_off_numlock,
+                vk_packet)
 
         # detach the python process from the window's process
         if self.element_info.handle:

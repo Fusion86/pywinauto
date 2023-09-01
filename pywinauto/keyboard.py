@@ -686,6 +686,27 @@ else:
 
         return keys
 
+    def parse_text(string, vk_packet=True):
+        keys = []
+        for c in string:       
+            # output newline
+            if c in ('\n'):
+                keys.append(VirtualKeyAction(CODES["ENTER"]))
+
+            # safest are the virtual keys - so if our key is a virtual key
+            # use a VirtualKeyAction
+            # if ord(c) in CODE_NAMES:
+            #    keys.append(VirtualKeyAction(ord(c)))
+
+            # if user disables the vk_packet option, always try to send a
+            # virtual key of the actual keystroke
+            elif not vk_packet and c in ascii_vk:
+                keys.append(VirtualKeyAction(ascii_vk[c]))
+
+            else:
+                keys.append(KeyAction(c))
+        return keys
+
 
     def LoByte(val):
         """Return the low byte of the value"""
@@ -708,6 +729,16 @@ else:
         keys = parse_keys(
                 keys, with_spaces, with_tabs, with_newlines,
                 vk_packet=vk_packet)
+
+        for k in keys:
+            k.run()
+            time.sleep(pause)
+
+    def send_text(keys,
+              pause=0.05,
+              vk_packet=True):
+        """Parse the text and type it"""
+        keys = parse_text(keys, vk_packet=vk_packet)
 
         for k in keys:
             k.run()
