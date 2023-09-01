@@ -74,7 +74,7 @@ else:
     packages = ["pywinauto", "pywinauto.linux", "pywinauto.controls"]
 
 setup(name='pywinauto',
-    version = '0.6.8',
+    version = '0.6.8-inline-mod-opt',
     description = 'A set of Python modules to automate the Microsoft Windows GUI',
     keywords = "windows gui automation GuiAuto testing test desktop mouse keyboard",
     url = "http://pywinauto.github.io/",

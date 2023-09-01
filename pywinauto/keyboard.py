@@ -114,7 +114,7 @@ import sys
 
 if sys.platform == 'win32':
     from .windows.keyboard import KeySequenceError, KeyboardEvent, KeyboardHook, KeyAction, VirtualKeyAction, EscapedKeyAction, PauseAction
-    from .windows.keyboard import handle_code, parse_keys, send_keys, LoByte, HiByte
+    from .windows.keyboard import handle_code, parse_keys, send_keys, LoByte, HiByte, parse_text, send_text
     from .windows.keyboard import INPUT_KEYBOARD, KEYEVENTF_EXTENDEDKEY, KEYEVENTF_KEYUP, KEYEVENTF_UNICODE, KEYEVENTF_SCANCODE
     from .windows.keyboard import VK_SHIFT, VK_CONTROL, VK_MENU, CODES, MODIFIERS
 else:

@@ -848,6 +848,7 @@ class BaseWrapper(object):
         with_newlines = False,
         turn_off_numlock = True,
         set_foreground = True,
+        inline_modifiers = True,
         vk_packet = True):
         """
         Type keys to the element using keyboard.send_keys
